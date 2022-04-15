@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}Add Tracker - Quantified Self App{% endblock title %}
+
+{% block body_class %}{% endblock body_class %}
+
+{% block content%}
+{% include 'navbar.html' %}
+
+<section class="h-100">
+    <div class="container h-100">
+        <div class="row justify-content-sm-center h-100">
+            <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-7 col-sm-9">
+                <div class="text-center my-5">
+                </div>
+                <div class="card shadow-lg">
+                    <div class="card-body p-5">
+                        <h1 class="fs-4 card-title fw-bold mb-4">Tracker Details</h1>
+                        <form method="POST" class="needs-validation" novalidate="" autocomplete="off">
+                            {% if tr_details['type'] == 'Bool': %}
+                            <div class="mb-3">
+                                <label class="mb-2 text-muted" for="password">Type:</label>
+                                <br>
+                                <label class="mb-2" for="">
+                                    <input type="radio" name="value" value="True">  Yes<br>       
+                                    <input type="radio" name="value" value="False">  No<br>       
+                                </label>    
+                                <br>
+                            </div>
+                            {% endif %} 
+                            {% if tr_details['type'] == 'Mul': %}
+                            <div class="mb-3">
+                                <label class="mb-2 text-muted" for="password">Type:</label>
+                                <br>
+                                <label class="mb-2" for="">
+                                    {% for temp in tr_details['mcb'].split(','): %}
+                                        <input type="radio" name="value" value={{temp}}>  {{temp}}<br>       
+                                    {% endfor %}
+                                </label>    
+                                <br>
+                            </div>
+                            {% endif %}
+                            {% if tr_details['type'] == 'Time' or tr_details['type'] == 'Num': %}
+                                <div class="mb-3">
+                                    <label class="mb-2 text-muted" for="">Value</label>
+                                    <input id="value" type="num" class="form-control" name="value" value="" required autofocus>
+                                </div>
+                            {% endif %}
+                            <div class="mb-3">
+                                <label class="mb-2 text-muted" for="email">Note</label>
+								<input id="name" type="name" class="form-control" name="note" value="" required autofocus>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                    <button
+                                     type="submit" class="btn btn-primary ms-auto">
+                                        Log
+                                    </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="text-center mt-5 text-muted">
+                    @Quantified-Self-App
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

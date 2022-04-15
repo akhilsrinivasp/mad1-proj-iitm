@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}Login - Quantified Self App{% endblock title %}
+
+{% block body_class %}{% endblock body_class %}
+
+{% block content%}
+	<section class="h-100">
+		<div class="container h-100">
+			<div class="row justify-content-sm-center h-100">
+				<div class="col-xxl-4 col-xl-5 col-lg-5 col-md-7 col-sm-9">
+					<div class="text-center my-5">
+						<br>
+					</div>
+					<div class="card shadow-lg">
+						<div class="card-body p-5">
+							<h1 class="fs-4 card-title fw-bold mb-4">Register</h1>
+							<form method="POST">
+								{{ form.hidden_tag() }}
+								<div class="mb-3">
+									<label class="mb-2 text-muted" for="name">Username</label>
+									<br>
+									{{ form.username }}
+								</div>
+								<div class="mb-3">
+									<label class="mb-2 text-muted" for="name">Name</label>
+									<br>
+									{{ form.name }}
+								</div>
+								<div class="mb-3">
+									<label class="mb-2 text-muted" for="name">Email</label>
+									<br>
+									{{ form.email }}
+								</div>
+								<div class="mb-3">
+									<label class="mb-2 text-muted" for="name">Password</label>
+									<br>
+									{{ form.password }}
+								</div>
+								<p class="form-text text-muted mb-3">
+									By registering you agree with our 
+									<a href="">Terms and conditions</a>.
+								</p>
+
+								<div class="align-items-center d-flex">
+									<button type="submit" class="btn btn-primary ms-auto">
+										Register	
+									</button>
+								</div>
+							</form>
+						</div>
+						<div class="card-footer py-3 border-0">
+							<div class="text-center">
+								Already have an account? <a href={{url_for('login')}} class="text-dark">Login</a>
+							</div>
+						</div>
+					</div>
+					<div class="text-center mt-5 text-muted" style ="padding: 0 0 10% 0;">
+						@Quantified-Self-App
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script src="js/login.js"></script>
+{% endblock content %}
