@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Quantified Self App{% endblock title %}
+
+{% block body_class %}{% endblock body_class %}
+
+{% block content%}
+{% include 'navbar.html' %}
+<h2 align = center>Hello {{name}}!</h2>
+{% if trackers: %}    
+	<div class="py-5">
+      <div class="container">
+        <div class="row hidden-md-up">	
+		{% for tracker in trackers: %}
+          <div class="col-md-4">
+            <div class="card tracker">
+              <div class="card-block">
+                <h4 class="card-title">{{tracker['name']}}</h4>
+                <h6 class="card-subtitle text-muted">{{tracker['type']}}</h6>
+				<a href="log/{{tracker['id']}}" class="card-link">Log</a>
+                <a href="tracker/logs/{{tracker['id']}}" class="card-link">Stats</a>
+                <a href="delete/{{tracker['id']}}" class="card-link">Delete Tracker</a>
+              </div>
+            </div>
+          </div>
+		{% endfor %}
+        </div>
+      </div>
+    </div>
+{% endif %}
+	<div align = center>
+		{%  if not trackers: %}
+		<h3>No trackers found.</h3>
+		{% endif %}
+	</div>
+{% endblock content %}

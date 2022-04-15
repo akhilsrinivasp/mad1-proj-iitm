@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Add Tracker - Quantified Self App{% endblock title %}
+
+{% block body_class %}{% endblock body_class %}
+
+{% block content%}
+{% include 'navbar.html' %}
+<div style = 'padding: 25%; padding-top: 3%'>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">S.No</th>
+            <th scope="col">Value</th>
+            <th scope="col">Note</th>
+            <th scope="col">Timestamp</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for log in logs: %}
+          <tr>
+            <th scope="row">1</th>
+            <td>{{log['value']}}</td>
+            <td>{{log['note']}}</td>
+            <td>{{log['timestamp']}}</td>
+            <td><a href="/delete/log/{{log['tracker_id']}}/{{log['timestamp']}}">Delete</a></td>
+          </tr>
+        {% endfor %}
+      </table>
+</div>
+
+{% endblock content %}
